@@ -4,10 +4,10 @@
 %notes: tests \gabcinlinesnippet: a fragment of real score (staff lines and
 %notes: clef included) set inline inside running text, with its staff lines
 %notes: trimmed to the width of the music.  Also covers the optional gabc
-%notes: header argument (nabc-lines, staff-lines), a forced line break
-%notes: ('Z') inside a snippet (which has no effect, a snippet being
-%notes: typeset in restricted horizontal mode), \gresetinlinesnippetraise
-%notes: and \gresetinlinesnippethook.
+%notes: header argument (nabc-lines, staff-lines), \gresetinlinesnippetraise
+%notes: and \gresetinlinesnippethook.  Does not cover a forced line break
+%notes: ('z'/'Z') inside a snippet: the two candidate implementations for
+%notes: #1771 disagree on its effect, so it is left out of this shared test.
 
 \documentclass[11pt]{article}
 \usepackage{fontspec}
@@ -53,13 +53,6 @@ extending past the final bar:
 \section*{Extra gabc header: \texttt{staff-lines:5;}}
 \noindent With a five-line staff:
 \fbox{\gabcinlinesnippet[staff-lines:5;]{(c3) A(f) le(gh) ia(f) (::)}}
-
-\bigskip
-\section*{Forced line break (\texttt{Z}) inside a snippet}
-\noindent A snippet is typeset in restricted horizontal mode, where there
-are no lines to break, so the forced break is ignored and the snippet runs
-on as a single staff:
-\fbox{\gabcinlinesnippet{(c3) A(f) le(g) (Z) lu(g) ia(f) (::)}}
 
 \bigskip
 \section*{\texttt{\char`\\gresetinlinesnippetraise}}
